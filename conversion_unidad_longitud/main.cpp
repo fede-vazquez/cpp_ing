@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdio.h>
+#include <string.h>
 
 using namespace std;
 
@@ -8,6 +10,10 @@ int main()
     string nombre;
 
     cout << "Ingresar nombre de recorrido: ";
+
+    cin.ignore();
+    // Esto se usa para que el getline no lea el Enter (\n) que se guarda en el buffer de terminal.
+    // Problema: Cuando tenemos un cin u otra cosa antes del getline, este getline toma el enter y se salta el input del texto.
     getline(cin, nombre);
 
     cout << "Ingresar distancia en km: ";
