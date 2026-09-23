@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -15,10 +16,29 @@ int nApariciones(string texto, char letra){
     }
 }
 
+int nMayor(vector<int> numeros, int largo){
+    //int len = sizeof(numeros) / sizeof(numeros[0]);
+    if(largo == 1){
+        return numeros[0];
+    }else{
+
+        numeros.pop_back();
+        int n = nMayor(numeros, largo-1);
+        if(numeros[largo - 1] > n){
+            return numeros[largo - 1];
+        }else{
+            return n;
+        }
+    }
+}
+
 int main()
 {
-    int n = nApariciones("hola", 'a');
-    cout << n;
+    //int n = nApariciones("hola", 'a');
+    //cout << n;
+    vector<int> a= {12,3,2,1,33,6,7,45};
+    int n = nMayor(a, a.size());
+    cout<<n;
     return 0;
 }
 
